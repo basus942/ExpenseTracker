@@ -1,5 +1,7 @@
 import Sidebar from "./components/sidebar";
+
 import "./globals.css";
+import { Providers } from "./providers";
 
 export const metadata = {
   title: "Create Next App",
@@ -8,12 +10,16 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className="flex ">
-        <Sidebar />
-        <div className=" bg-white w-screen rounded-xl  ">
-          <div>{children}</div>
-        </div>
+    <html lang="en" className="dark">
+      <body>
+        <Providers>
+          <div className="flex">
+            <Sidebar />
+            <div className="  w-screen rounded-xl  ">
+              <div>{children}</div>
+            </div>
+          </div>
+        </Providers>
       </body>
     </html>
   );

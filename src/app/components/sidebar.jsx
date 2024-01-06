@@ -2,9 +2,10 @@
 "use client";
 import Link from "next/link";
 import React from "react";
-import Avatar from "./avatar";
+
 import {
-  TbArrowBarRight,
+  TbArrowBarLeft,
+  TbBaselineDensityMedium,
   TbHome2,
   TbPigMoney,
   TbSettings,
@@ -12,8 +13,9 @@ import {
   TbWallet,
 } from "react-icons/tb";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 const Sidebar = () => {
-  const icon_size = 25;
+  const icon_size = 29;
   const links = [
     { label: "Dashboard", icon: <TbHome2 size={icon_size} />, path: "/" },
     {
@@ -21,33 +23,49 @@ const Sidebar = () => {
       icon: <TbPigMoney size={icon_size} />,
       path: "/expenses",
     },
-    { label: "Wallets", icon: <TbWallet size={icon_size} />, path: "/" },
-    { label: "Accounts", icon: <TbUserHexagon size={icon_size} />, path: "/" },
-    { label: "Settings", icon: <TbSettings size={icon_size} />, path: "/" },
+    { label: "Wallet", icon: <TbWallet size={icon_size} />, path: "/wallet" },
+    {
+      label: "Account",
+      icon: <TbUserHexagon size={icon_size} />,
+      path: "/account",
+    },
+    {
+      label: "Settings",
+      icon: <TbSettings size={icon_size} />,
+      path: "/settings",
+    },
   ];
   const [showSidebar, setShowSidebar] = React.useState(true);
+  const pathname = usePathname();
 
   return (
     <>
       <div
         className={` flex justify-center ${
           showSidebar ? "w-64" : "w-12"
-        } h-screen duration-700 relative bg-slate-800 overflow-hidden`}
+        } h-screen duration-700 relative bg-slate-800  overflow-hidden`}
       >
         <button
-          onClick={() => setShowSidebar(!showSidebar)}
-          className="text-red-500  absolute top-0 right-0 "
+          onClick={() => setShowSidebar(false)}
+          className="text-white absolute top-0 right-0 "
         >
-          {showSidebar ? "close" : <TbArrowBarRight size={icon_size} />}
+          {showSidebar && <TbArrowBarLeft size={icon_size} />}
         </button>
-        <div className="flex flex-col items-start pt-20 gap-3 text-white">
+        <div className="flex flex-col items-start pt-5 gap-3 text-white">
+          {!showSidebar && (
+            <button onClick={() => setShowSidebar(true)}>
+              <TbBaselineDensityMedium size={icon_size} className="mb-5" />
+            </button>
+          )}
+
           <Image
             src="/micheal.jpg"
             alt="profile picture"
             className="rounded-xl object-cover duration-700"
-            width={showSidebar ? 100 : 30}
-            height={showSidebar ? 100 : 30}
+            width={showSidebar ? 100 : 36}
+            height={showSidebar ? 100 : 36}
           />
+
           {showSidebar && (
             <div className="flex flex-col">
               <text className="text-xl font-bold text-nowrap">
@@ -59,11 +77,13 @@ const Sidebar = () => {
             </div>
           )}
 
-          {links.map((link) => (
+          {links.map((link, index) => (
             <Link
-              className=" flex  items-center "
+              key={index}
+              className={`flex link items-center hover:text-gray-300 ${
+                pathname === link.path ? "text-green-500" : ""
+              }`}
               href={link.path}
-              key={link.label}
             >
               {link.icon}
               {showSidebar && <span className="pl-2">{link.label}</span>}

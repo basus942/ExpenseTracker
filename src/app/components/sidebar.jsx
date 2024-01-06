@@ -41,37 +41,37 @@ const Sidebar = () => {
   return (
     <>
       <div
-        className={` flex justify-center bg-secondary ${
+        className={` flex justify-center bg-secondary-200 ${
           showSidebar ? "w-64" : "w-12"
-        } h-screen duration-700 relative  overflow-hidden`}
+        } h-screen duration-500 relative  overflow-hidden`}
       >
         <button
           onClick={() => setShowSidebar(false)}
-          className="text-white absolute top-0 right-0 "
+          className="text-white-200 absolute top-0 right-0 "
         >
           {showSidebar && <TbArrowBarLeft size={icon_size} />}
         </button>
-        <div className="flex flex-col items-start pt-5 gap-4 text-white">
+        <div className="flex flex-col items-start pt-5 gap-5 text-white-200">
           {!showSidebar && (
             <button onClick={() => setShowSidebar(true)}>
-              <TbBaselineDensityMedium size={icon_size} className="mb-5" />
+              <TbBaselineDensityMedium size={icon_size} />
             </button>
           )}
 
           <Image
             src="/micheal.jpg"
             alt="profile picture"
-            className="rounded-xl object-cover duration-700"
-            width={showSidebar ? 130 : 36}
+            className="rounded-xl mt-5 object-cover duration-700"
+            width={showSidebar ? 130 : 35}
             height={showSidebar ? 0 : 36}
           />
 
           {showSidebar && (
-            <div className="flex flex-col pb-4">
+            <div className="flex flex-col pb-3">
               <text className="text-xl font-bold text-nowrap">
                 Subhajit Basu
               </text>
-              <text className="text-sm text-grey text-nowrap">
+              <text className="text-sm text-grey-200 text-nowrap">
                 subhajit@gmail.com
               </text>
             </div>
@@ -80,8 +80,8 @@ const Sidebar = () => {
           {links.map((link, index) => (
             <Link
               key={index}
-              className={`flex link items-center hover:text-active ${
-                pathname === link.path ? "text-active" : ""
+              className={`flex link items-center hover:text-active-300 ${
+                pathname === link.path ? "text-active-200" : ""
               }`}
               href={link.path}
             >

@@ -1,35 +1,77 @@
+// Sidebar.js
+"use client";
 import Link from "next/link";
 import React from "react";
 import Avatar from "./avatar";
-
+import {
+  TbArrowBarRight,
+  TbHome2,
+  TbPigMoney,
+  TbSettings,
+  TbUserHexagon,
+  TbWallet,
+} from "react-icons/tb";
+import Image from "next/image";
 const Sidebar = () => {
+  const icon_size = 25;
   const links = [
-    { label: "Dashboard", path: "/" },
-    { label: "Expenses", path: "/expenses" },
-    { label: "Wallets", path: "/" },
-    { label: "Summary", path: "/" },
-    { label: "Accounts", path: "/" },
-    { label: "Settings", path: "/" },
+    { label: "Dashboard", icon: <TbHome2 size={icon_size} />, path: "/" },
+    {
+      label: "Expenses",
+      icon: <TbPigMoney size={icon_size} />,
+      path: "/expenses",
+    },
+    { label: "Wallets", icon: <TbWallet size={icon_size} />, path: "/" },
+    { label: "Accounts", icon: <TbUserHexagon size={icon_size} />, path: "/" },
+    { label: "Settings", icon: <TbSettings size={icon_size} />, path: "/" },
   ];
+  const [showSidebar, setShowSidebar] = React.useState(true);
+
   return (
-    <div className=" flex justify-center items-center text-white h-screen w-2/5 lg:w-2/6 -z-1">
-      <div className="flex flex-col  mx-20 md:mx-0 items-start ">
-        <Avatar />
-        <text className="text-lg text-nowrap lg:text-3xl ">Subhajit Basu</text>
-        <text className="text-xs text-nowrap mb-5 lg:text-lg text-slate-300">
-          subhajit@gmail.com
-        </text>
-        {links.map((link, index) => (
-          <Link
-            href={link.path}
-            className="text-sm text-bold py-1 lg:py-2 lg:text-xl"
-            key={index}
-          >
-            {link.label}
-          </Link>
-        ))}
+    <>
+      <div
+        className={` flex justify-center ${
+          showSidebar ? "w-64" : "w-12"
+        } h-screen duration-700 relative bg-slate-800 overflow-hidden`}
+      >
+        <button
+          onClick={() => setShowSidebar(!showSidebar)}
+          className="text-red-500  absolute top-0 right-0 "
+        >
+          {showSidebar ? "close" : <TbArrowBarRight size={icon_size} />}
+        </button>
+        <div className="flex flex-col items-start pt-20 gap-3 text-white">
+          <Image
+            src="/micheal.jpg"
+            alt="profile picture"
+            className="rounded-xl object-cover duration-700"
+            width={showSidebar ? 100 : 30}
+            height={showSidebar ? 100 : 30}
+          />
+          {showSidebar && (
+            <div className="flex flex-col">
+              <text className="text-xl font-bold text-nowrap">
+                Subhajit Basu
+              </text>
+              <text className="text-sm text-gray-400 text-nowrap">
+                subhajit@gmail.com
+              </text>
+            </div>
+          )}
+
+          {links.map((link) => (
+            <Link
+              className=" flex  items-center "
+              href={link.path}
+              key={link.label}
+            >
+              {link.icon}
+              {showSidebar && <span className="pl-2">{link.label}</span>}
+            </Link>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

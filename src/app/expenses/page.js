@@ -1,7 +1,7 @@
 import React from "react";
 
 const Expenses = () => {
-  return <div>Expenses</div>;
+  return <div className="bg-primary-500">Expenses</div>;
 };
 
 export default Expenses;

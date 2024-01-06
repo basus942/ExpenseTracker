@@ -41,9 +41,9 @@ const Sidebar = () => {
   return (
     <>
       <div
-        className={` flex justify-center ${
+        className={` flex justify-center bg-secondary ${
           showSidebar ? "w-64" : "w-12"
-        } h-screen duration-700 relative bg-slate-800  overflow-hidden`}
+        } h-screen duration-700 relative  overflow-hidden`}
       >
         <button
           onClick={() => setShowSidebar(false)}
@@ -51,7 +51,7 @@ const Sidebar = () => {
         >
           {showSidebar && <TbArrowBarLeft size={icon_size} />}
         </button>
-        <div className="flex flex-col items-start pt-5 gap-3 text-white">
+        <div className="flex flex-col items-start pt-5 gap-4 text-white">
           {!showSidebar && (
             <button onClick={() => setShowSidebar(true)}>
               <TbBaselineDensityMedium size={icon_size} className="mb-5" />
@@ -62,16 +62,16 @@ const Sidebar = () => {
             src="/micheal.jpg"
             alt="profile picture"
             className="rounded-xl object-cover duration-700"
-            width={showSidebar ? 100 : 36}
-            height={showSidebar ? 100 : 36}
+            width={showSidebar ? 130 : 36}
+            height={showSidebar ? 0 : 36}
           />
 
           {showSidebar && (
-            <div className="flex flex-col">
+            <div className="flex flex-col pb-4">
               <text className="text-xl font-bold text-nowrap">
                 Subhajit Basu
               </text>
-              <text className="text-sm text-gray-400 text-nowrap">
+              <text className="text-sm text-grey text-nowrap">
                 subhajit@gmail.com
               </text>
             </div>
@@ -80,8 +80,8 @@ const Sidebar = () => {
           {links.map((link, index) => (
             <Link
               key={index}
-              className={`flex link items-center hover:text-gray-300 ${
-                pathname === link.path ? "text-green-500" : ""
+              className={`flex link items-center hover:text-grey ${
+                pathname === link.path ? "text-active" : ""
               }`}
               href={link.path}
             >

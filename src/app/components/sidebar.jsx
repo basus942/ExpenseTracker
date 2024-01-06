@@ -80,7 +80,7 @@ const Sidebar = () => {
           {links.map((link, index) => (
             <Link
               key={index}
-              className={`flex link items-center hover:text-grey ${
+              className={`flex link items-center hover:text-active ${
                 pathname === link.path ? "text-active" : ""
               }`}
               href={link.path}

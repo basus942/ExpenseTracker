@@ -1,5 +1,5 @@
 import React from "react";
-import { TbSearch } from "react-icons/tb";
+import SearchIcon from "@mui/icons-material/Search";
 
 const Dashboard = () => {
   return (
@@ -15,7 +15,7 @@ const Dashboard = () => {
         aria-label="Search here"
         placeholder="Search here..."
       />
-      <TbSearch size={30} className="inline-block  sm:hidden" />
+      <SearchIcon fontSize="small" className="inline-block  sm:hidden" />
     </div>
   );
 };

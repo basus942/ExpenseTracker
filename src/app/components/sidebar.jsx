@@ -3,40 +3,48 @@
 import Link from "next/link";
 import React from "react";
 
-import {
-  TbArrowBarLeft,
-  TbBaselineDensityMedium,
-  TbHome2,
-  TbPigMoney,
-  TbSettings,
-  TbUserHexagon,
-  TbWallet,
-} from "react-icons/tb";
+import HomeIcon from "@mui/icons-material/Home";
+
+import SavingsIcon from "@mui/icons-material/Savings";
+import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import DensityMediumIcon from "@mui/icons-material/DensityMedium";
+import NavigateBeforeRoundedIcon from "@mui/icons-material/NavigateBeforeRounded";
+import ExitToAppRoundedIcon from "@mui/icons-material/ExitToAppRounded";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import BedtimeIcon from "@mui/icons-material/Bedtime";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+
 const Sidebar = () => {
-  const icon_size = 29;
+  const [theme, setTheme] = React.useState("light");
   const links = [
     {
       label: "Dashboard",
-      icon: <TbHome2 size={icon_size} />,
+      // icon: <TbHome2 size={icon_size} />,
+      icon: <HomeIcon fontSize="large" />,
       path: "/dashboard",
     },
     {
       label: "Expenses",
-      icon: <TbPigMoney size={icon_size} />,
+      icon: <SavingsIcon fontSize="large" />,
       path: "/expenses",
     },
-    { label: "Wallet", icon: <TbWallet size={icon_size} />, path: "/wallet" },
+
     {
       label: "Account",
-      icon: <TbUserHexagon size={icon_size} />,
+      icon: <AccountBoxIcon fontSize="large" />,
       path: "/account",
     },
     {
       label: "Settings",
-      icon: <TbSettings size={icon_size} />,
+      icon: <SettingsApplicationsIcon fontSize="large" />,
       path: "/settings",
+    },
+    {
+      label: "logout",
+      icon: <ExitToAppRoundedIcon fontSize="large" />,
+      path: "/",
     },
   ];
   const [showSidebar, setShowSidebar] = React.useState(false);
@@ -46,22 +54,23 @@ const Sidebar = () => {
     <>
       <div
         className={` flex justify-center sticky top-0 z-10 overflow-hidden h-dvh p-1  bg-secondary-200 ${
-          showSidebar ? "w-64 " : "w-12"
-        }  duration-200 `}
+          showSidebar ? "w-64  " : "w-16"
+        } transition-width duration-300 linear`}
       >
         <button
           onClick={() => setShowSidebar(false)}
           className="text-white-200 absolute top-0 right-0 "
         >
-          {showSidebar && <TbArrowBarLeft size={icon_size} />}
+          {showSidebar && <NavigateBeforeRoundedIcon fontSize="large" />}
         </button>
-        <div className="flex flex-col items-start pt-5 gap-5 text-white-200">
+        <div
+          className={`flex flex-col items-start pt-5 ${
+            showSidebar ? "gap-3" : "gap-5"
+          }  text-white-200`}
+        >
           {!showSidebar && (
             <button onClick={() => setShowSidebar(true)}>
-              <TbBaselineDensityMedium
-                size={icon_size}
-                // className="hidden md:block"
-              />
+              <DensityMediumIcon fontSize="large" />
             </button>
           )}
           <Link href="/">
@@ -69,7 +78,7 @@ const Sidebar = () => {
               src="/micheal.jpg"
               alt="profile picture"
               className="rounded-xl mt-5 object-cover duration-700"
-              width={showSidebar ? 125 : 35}
+              width={showSidebar ? 125 : 40}
               height={showSidebar ? 0 : 36}
             />
           </Link>
@@ -83,7 +92,6 @@ const Sidebar = () => {
               </text>
             </div>
           )}
-
           {links.map((link, index) => (
             <Link
               key={index}
@@ -93,9 +101,20 @@ const Sidebar = () => {
               href={link.path}
             >
               {link.icon}
-              {showSidebar && <span className="pl-2">{link.label}</span>}
+              {showSidebar && <h4 className="pl-2">{link.label}</h4>}
             </Link>
           ))}
+
+          <button
+            className={`absolute bottom-5 ${showSidebar && "hidden"}`}
+            onClick={() => setTheme(theme == "light" ? "dark" : "light")}
+          >
+            {theme == "light" ? (
+              <LightModeIcon fontSize="large" />
+            ) : (
+              <BedtimeIcon fontSize="large" />
+            )}
+          </button>
         </div>
       </div>
     </>

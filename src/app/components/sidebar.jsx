@@ -64,15 +64,15 @@ const Sidebar = () => {
               />
             </button>
           )}
-
-          <Image
-            src="/micheal.jpg"
-            alt="profile picture"
-            className="rounded-xl mt-5 object-cover duration-700"
-            width={showSidebar ? 125 : 35}
-            height={showSidebar ? 0 : 36}
-          />
-
+          <Link href="/">
+            <Image
+              src="/micheal.jpg"
+              alt="profile picture"
+              className="rounded-xl mt-5 object-cover duration-700"
+              width={showSidebar ? 125 : 35}
+              height={showSidebar ? 0 : 36}
+            />
+          </Link>
           {showSidebar && (
             <div className="flex flex-col pb-3">
               <text className="text-xl font-bold text-nowrap">

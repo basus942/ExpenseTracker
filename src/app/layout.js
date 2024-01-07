@@ -11,10 +11,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en " data-theme="light">
       <body>
-        <div className="flex">
+        <div className="flex items-start">
           <Sidebar />
-          <div className="  w-screen  bg-primary ">
-            <div>{children}</div>
+          <div className="  w-screen min-h-screen bg-primary-100 ">
+            <div className=" m-6 ">{children}</div>
           </div>
         </div>
       </body>

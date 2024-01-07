@@ -17,7 +17,11 @@ import { usePathname } from "next/navigation";
 const Sidebar = () => {
   const icon_size = 29;
   const links = [
-    { label: "Dashboard", icon: <TbHome2 size={icon_size} />, path: "/" },
+    {
+      label: "Dashboard",
+      icon: <TbHome2 size={icon_size} />,
+      path: "/dashboard",
+    },
     {
       label: "Expenses",
       icon: <TbPigMoney size={icon_size} />,
@@ -35,15 +39,15 @@ const Sidebar = () => {
       path: "/settings",
     },
   ];
-  const [showSidebar, setShowSidebar] = React.useState(true);
+  const [showSidebar, setShowSidebar] = React.useState(false);
   const pathname = usePathname();
 
   return (
     <>
       <div
-        className={` flex justify-center bg-secondary-200 ${
-          showSidebar ? "w-64" : "w-12"
-        } h-screen duration-500 relative  overflow-hidden`}
+        className={` flex justify-center sticky top-0 z-10 overflow-hidden h-dvh  bg-secondary-200 ${
+          showSidebar ? "w-40 md:w-52" : "w-12"
+        }  duration-500 `}
       >
         <button
           onClick={() => setShowSidebar(false)}
@@ -54,7 +58,10 @@ const Sidebar = () => {
         <div className="flex flex-col items-start pt-5 gap-5 text-white-200">
           {!showSidebar && (
             <button onClick={() => setShowSidebar(true)}>
-              <TbBaselineDensityMedium size={icon_size} />
+              <TbBaselineDensityMedium
+                size={icon_size}
+                className="hidden md:block"
+              />
             </button>
           )}
 
@@ -80,7 +87,7 @@ const Sidebar = () => {
           {links.map((link, index) => (
             <Link
               key={index}
-              className={`flex link items-center hover:text-active-300 ${
+              className={`flex link items-center hover:text-active-300 no-underline ${
                 pathname === link.path ? "text-active-200" : ""
               }`}
               href={link.path}

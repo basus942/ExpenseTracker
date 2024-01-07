@@ -13,8 +13,8 @@ export default function RootLayout({ children }) {
       <body>
         <div className="flex items-start">
           <Sidebar />
-          <div className="  w-screen min-h-screen bg-primary-100 ">
-            <div className=" m-6 ">{children}</div>
+          <div className="  w-screen min-h-screen bg-primary-100 p-2 ">
+            {children}
           </div>
         </div>
       </body>

@@ -12,7 +12,7 @@ import { BsPiggyBank } from "react-icons/bs";
 
 const Financial_Overview = () => {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+    <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-4 gap-1 md:gap-3">
       <Card>
         <div className="flex justify-between ">
           <span className="bg-grey-100 rounded-full  w-7 h-7  flex items-center justify-center my-2">

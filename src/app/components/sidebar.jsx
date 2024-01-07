@@ -45,9 +45,9 @@ const Sidebar = () => {
   return (
     <>
       <div
-        className={` flex justify-center sticky top-0 z-10 overflow-hidden h-dvh  bg-secondary-200 ${
-          showSidebar ? "w-40 md:w-52" : "w-12"
-        }  duration-500 `}
+        className={` flex justify-center sticky top-0 z-10 overflow-hidden h-dvh p-1  bg-secondary-200 ${
+          showSidebar ? "w-64 " : "w-12"
+        }  duration-200 `}
       >
         <button
           onClick={() => setShowSidebar(false)}
@@ -60,7 +60,7 @@ const Sidebar = () => {
             <button onClick={() => setShowSidebar(true)}>
               <TbBaselineDensityMedium
                 size={icon_size}
-                className="hidden md:block"
+                // className="hidden md:block"
               />
             </button>
           )}
@@ -69,7 +69,7 @@ const Sidebar = () => {
             src="/micheal.jpg"
             alt="profile picture"
             className="rounded-xl mt-5 object-cover duration-700"
-            width={showSidebar ? 130 : 35}
+            width={showSidebar ? 125 : 35}
             height={showSidebar ? 0 : 36}
           />
 

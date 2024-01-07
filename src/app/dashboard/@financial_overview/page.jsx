@@ -12,14 +12,11 @@ import { BsPiggyBank } from "react-icons/bs";
 
 const Financial_Overview = () => {
   return (
-    <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-4 gap-1 md:gap-3">
+    <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-4 gap-0 xs:gap-3">
       <Card>
-        <div className="flex justify-between ">
-          <span className="bg-grey-100 rounded-full  w-7 h-7  flex items-center justify-center my-2">
-            <TbCurrencyDollar size={20} />
-          </span>
-          <TbDots />
-        </div>
+        <span className="bg-grey-100 rounded-full  w-7 h-7  flex items-center justify-center ml-2 mb-2">
+          <TbCurrencyDollar size={30} />
+        </span>
 
         <text className="uppercase text-xs font-semibold"> Total Income</text>
 
@@ -32,12 +29,9 @@ const Financial_Overview = () => {
         </text>
       </Card>
       <Card className="bg-green-400">
-        <div className="flex justify-between ">
-          <span className="bg-white rounded-full  w-7 h-7   flex items-center justify-center my-2">
-            <TbCoin size={20} />
-          </span>
-          <TbDots />
-        </div>
+        <span className="bg-white rounded-full  w-7 h-7   flex items-center justify-center ml-2 mb-2">
+          <TbCoin size={30} />
+        </span>
 
         <text className="uppercase text-xs font-semibold">Total Expense</text>
 
@@ -50,12 +44,9 @@ const Financial_Overview = () => {
         </text>
       </Card>
       <Card>
-        <div className="flex justify-between ">
-          <span className="bg-grey-100 rounded-full  w-7 h-7  flex items-center justify-center my-2">
-            <BsPiggyBank size={20} />
-          </span>
-          <TbDots />
-        </div>
+        <span className="bg-grey-100 rounded-full  w-7 h-7  flex items-center justify-center ml-2 mb-2">
+          <BsPiggyBank size={30} />
+        </span>
 
         <text className="uppercase text-xs font-semibold">Total Savings</text>
 
@@ -69,12 +60,9 @@ const Financial_Overview = () => {
         </text>
       </Card>
       <Card>
-        <div className="flex justify-between ">
-          <span className="bg-grey-100 rounded-full  w-7 h-7  flex items-center justify-center my-2">
-            <TbCreditCard size={20} />
-          </span>
-          <TbDots />
-        </div>
+        <span className="bg-grey-100 rounded-full  w-7 h-7  flex items-center justify-center ml-2 mb-2">
+          <TbCreditCard size={30} />
+        </span>
 
         <text className="uppercase text-xs font-semibold">Most Spending</text>
 

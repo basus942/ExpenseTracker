@@ -87,7 +87,7 @@ const Sidebar = () => {
           {links.map((link, index) => (
             <Link
               key={index}
-              className={`flex link items-center hover:text-active-300 no-underline ${
+              className={`flex link items-center  hover:scale-105 no-underline ${
                 pathname === link.path ? "text-active-200" : ""
               }`}
               href={link.path}
